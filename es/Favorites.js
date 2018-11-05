@@ -29,7 +29,7 @@ var Favorites = function (_Component) {
         key: 'componentWillReceiveProps',
         value: function componentWillReceiveProps(nextProps) {
             // fetch data only the first time the dialog is open
-            if (nextProps.open && !nextProps.dataIsLoaded) {
+            if (nextProps.open && (!nextProps.dataIsLoaded || nextProps.refreshData)) {
                 this.props.fetchData();
             }
         }

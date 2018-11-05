@@ -10,10 +10,6 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = require('react-redux');
 
-var _IconButton = require('@material-ui/core/IconButton');
-
-var _IconButton2 = _interopRequireDefault(_IconButton);
-
 var _Table = require('@material-ui/core/Table');
 
 var _Table2 = _interopRequireDefault(_Table);
@@ -45,18 +41,6 @@ var _TableRow2 = _interopRequireDefault(_TableRow);
 var _TableSortLabel = require('@material-ui/core/TableSortLabel');
 
 var _TableSortLabel2 = _interopRequireDefault(_TableSortLabel);
-
-var _Tooltip = require('@material-ui/core/Tooltip');
-
-var _Tooltip2 = _interopRequireDefault(_Tooltip);
-
-var _MoreVert = require('@material-ui/icons/MoreVert');
-
-var _MoreVert2 = _interopRequireDefault(_MoreVert);
-
-var _ActionsMenu = require('./ActionsMenu');
-
-var _ActionsMenu2 = _interopRequireDefault(_ActionsMenu);
 
 var _actions = require('./actions');
 
@@ -109,8 +93,7 @@ var EnhancedTableHead = function EnhancedTableHead(props) {
                         c.label
                     )
                 );
-            }),
-            _react2.default.createElement(_TableCell2.default, null)
+            })
         )
     );
 };
@@ -124,19 +107,9 @@ var EnhancedTable = function EnhancedTable(props) {
         order = props.order,
         column = props.column,
         sortData = props.sortData,
-        toggleActionsMenu = props.toggleActionsMenu,
-        setActionsMenuAnchorEl = props.setActionsMenuAnchorEl,
         selectFavorite = props.selectFavorite,
         onFavoriteSelect = props.onFavoriteSelect;
 
-
-    var actionsMenuHandler = function actionsMenuHandler(model) {
-        return function (event) {
-            selectFavorite(model);
-            setActionsMenuAnchorEl(event.currentTarget);
-            toggleActionsMenu();
-        };
-    };
 
     var clickHandler = function clickHandler(id) {
         return function (event) {
@@ -176,23 +149,6 @@ var EnhancedTable = function EnhancedTable(props) {
                             _TableCell2.default,
                             { padding: 'dense' },
                             _react2.default.createElement(Time, { date: favorite.lastUpdated })
-                        ),
-                        _react2.default.createElement(
-                            _TableCell2.default,
-                            { padding: 'dense' },
-                            favorite.access.update && favorite.access.manage && favorite.access.delete ? _react2.default.createElement(
-                                _Tooltip2.default,
-                                { title: 'Actions', placement: 'bottom' },
-                                _react2.default.createElement(
-                                    _IconButton2.default,
-                                    { onClick: actionsMenuHandler(favorite) },
-                                    _react2.default.createElement(_MoreVert2.default, null)
-                                )
-                            ) : _react2.default.createElement(
-                                _IconButton2.default,
-                                { disabled: true },
-                                _react2.default.createElement(_MoreVert2.default, { color: 'disabled' })
-                            )
                         )
                     );
                 })
@@ -214,8 +170,7 @@ var EnhancedTable = function EnhancedTable(props) {
                     })
                 )
             )
-        ),
-        _react2.default.createElement(_ActionsMenu2.default, null)
+        )
     );
 };
 
@@ -234,8 +189,6 @@ var mapDispatchToProps = {
     setRowsPerPage: _actions.setRowsPerPage,
     changePage: _actions.changePage,
     sortData: _actions.sortData,
-    toggleActionsMenu: _actions.toggleActionsMenu,
-    setActionsMenuAnchorEl: _actions.setActionsMenuAnchorEl,
     selectFavorite: _actions.selectFavorite
 };
 

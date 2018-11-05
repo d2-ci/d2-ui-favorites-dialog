@@ -1,4 +1,3 @@
-import _JSON$stringify from 'babel-runtime/core-js/json/stringify';
 import { actionTypes } from '../reducers';
 import log from 'loglevel';
 
@@ -6,101 +5,11 @@ export var toggleLoading = function toggleLoading() {
     return { type: actionTypes.TOGGLE_LOADING };
 };
 
-// actions context menu
-export var toggleActionsMenu = function toggleActionsMenu() {
-    return {
-        type: actionTypes.TOGGLE_ACTIONS_MENU
-    };
-};
-
-export var setActionsMenuAnchorEl = function setActionsMenuAnchorEl(el) {
-    return {
-        type: actionTypes.SET_ACTIONS_MENU_ANCHOR_EL,
-        payload: el
-    };
-};
-
 // select
 export var selectFavorite = function selectFavorite(model) {
     return {
         type: actionTypes.SET_SELECTED_FAVORITE,
         payload: model
-    };
-};
-
-// delete
-export var toggleDeleteDialog = function toggleDeleteDialog() {
-    return {
-        type: actionTypes.TOGGLE_DELETE_DIALOG
-    };
-};
-
-export var deleteFavorite = function deleteFavorite(event) {
-    return function (dispatch, getState) {
-        var state = getState();
-        var selectedFavorite = state.actions.select.favoriteModel;
-
-        if (selectedFavorite) {
-            selectedFavorite.delete().then(function () {
-                dispatch(toggleDeleteDialog());
-                dispatch(fetchData());
-            }).catch(function (error) {
-                return log.error('favorites: delete error', error);
-            });
-        }
-    };
-};
-
-// rename
-export var toggleRenameDialog = function toggleRenameDialog() {
-    return {
-        type: actionTypes.TOGGLE_RENAME_DIALOG
-    };
-};
-
-export var renameFavorite = function renameFavorite(form) {
-    return function (dispatch, getState) {
-        var state = getState();
-        var favoriteModel = state.actions.select.favoriteModel;
-        var newName = form.newName;
-        var newDescription = form.newDescription;
-        var api = void 0;
-
-        if (favoriteModel) {
-            api = state.d2.Api.getApi();
-
-            // the whole model is required for validation
-            state.d2.models[state.filtering.type].get(favoriteModel.id).then(function (model) {
-                model.name = newName;
-                model.description = newDescription;
-
-                model.validate().then(function (validationStatus) {
-                    if (validationStatus.status === true) {
-                        var payload = {
-                            // can be empty
-                            description: newDescription
-                        };
-
-                        if (newName) {
-                            payload.name = newName;
-                        }
-
-                        if (payload.name) {
-                            api.request('PATCH', model.href, _JSON$stringify(payload)).then(function (response) {
-                                dispatch(toggleRenameDialog());
-                                // refresh data
-                                dispatch(fetchData());
-                            }).catch(function (error) {
-                                log.error('favorites: rename error', error);
-                                dispatch(toggleRenameDialog());
-                            });
-                        }
-                    }
-                });
-            }).catch(function (error) {
-                log.error('favorites: favorite (' + favoriteModel.id + ') not found (' + error + ')');
-            });
-        }
     };
 };
 
@@ -112,12 +21,6 @@ export var setD2 = function setD2(d2) {
     };
 };
 
-// share
-export var toggleShareDialog = function toggleShareDialog() {
-    return {
-        type: actionTypes.TOGGLE_SHARE_DIALOG
-    };
-};
 export var setFavoriteType = function setFavoriteType(type) {
     return {
         type: actionTypes.SET_FAVORITE_TYPE,

@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import IconButton from '@material-ui/core/IconButton';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -10,12 +9,8 @@ import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
 import TableSortLabel from '@material-ui/core/TableSortLabel';
-import Tooltip from '@material-ui/core/Tooltip';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
 
-import ActionsMenu from './ActionsMenu';
-
-import { changePage, setRowsPerPage, sortData, toggleActionsMenu, setActionsMenuAnchorEl, selectFavorite } from './actions';
+import { changePage, setRowsPerPage, sortData, selectFavorite } from './actions';
 
 var Time = function Time(_ref) {
     var date = _ref.date;
@@ -64,8 +59,7 @@ var EnhancedTableHead = function EnhancedTableHead(props) {
                         c.label
                     )
                 );
-            }),
-            React.createElement(TableCell, null)
+            })
         )
     );
 };
@@ -79,19 +73,9 @@ var EnhancedTable = function EnhancedTable(props) {
         order = props.order,
         column = props.column,
         sortData = props.sortData,
-        toggleActionsMenu = props.toggleActionsMenu,
-        setActionsMenuAnchorEl = props.setActionsMenuAnchorEl,
         selectFavorite = props.selectFavorite,
         onFavoriteSelect = props.onFavoriteSelect;
 
-
-    var actionsMenuHandler = function actionsMenuHandler(model) {
-        return function (event) {
-            selectFavorite(model);
-            setActionsMenuAnchorEl(event.currentTarget);
-            toggleActionsMenu();
-        };
-    };
 
     var clickHandler = function clickHandler(id) {
         return function (event) {
@@ -131,23 +115,6 @@ var EnhancedTable = function EnhancedTable(props) {
                             TableCell,
                             { padding: 'dense' },
                             React.createElement(Time, { date: favorite.lastUpdated })
-                        ),
-                        React.createElement(
-                            TableCell,
-                            { padding: 'dense' },
-                            favorite.access.update && favorite.access.manage && favorite.access.delete ? React.createElement(
-                                Tooltip,
-                                { title: 'Actions', placement: 'bottom' },
-                                React.createElement(
-                                    IconButton,
-                                    { onClick: actionsMenuHandler(favorite) },
-                                    React.createElement(MoreVertIcon, null)
-                                )
-                            ) : React.createElement(
-                                IconButton,
-                                { disabled: true },
-                                React.createElement(MoreVertIcon, { color: 'disabled' })
-                            )
                         )
                     );
                 })
@@ -169,8 +136,7 @@ var EnhancedTable = function EnhancedTable(props) {
                     })
                 )
             )
-        ),
-        React.createElement(ActionsMenu, null)
+        )
     );
 };
 
@@ -189,8 +155,6 @@ var mapDispatchToProps = {
     setRowsPerPage: setRowsPerPage,
     changePage: changePage,
     sortData: sortData,
-    toggleActionsMenu: toggleActionsMenu,
-    setActionsMenuAnchorEl: setActionsMenuAnchorEl,
     selectFavorite: selectFavorite
 };
 

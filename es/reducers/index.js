@@ -4,7 +4,6 @@ import { combineReducers } from 'redux';
 export var actionTypes = {
     SET_D2: 'SET_D2',
     SET_FAVORITE_TYPE: 'SET_FAVORITE_TYPE',
-    SET_ACTIONS_MENU_ANCHOR_EL: 'SET_ACTIONS_MENU_ANCHOR_EL',
     SET_SORT_ORDER: 'SET_SORT_ORDER',
     SET_SORT_COLUMN: 'SET_SORT_COLUMN',
     SET_DATA: 'SET_DATA',
@@ -15,28 +14,13 @@ export var actionTypes = {
     SET_ROWS_PER_PAGE: 'SET_ROWS_PER_PAGE',
     SET_TOTAL_RECORDS: 'SET_TOTAL_RECORDS',
     SET_SELECTED_FAVORITE: 'SET_SELECTED_FAVORITE',
-    TOGGLE_LOADING: 'TOGGLE_LOADING',
-    TOGGLE_DELETE_DIALOG: 'TOGGLE_DELETE_DIALOG',
-    TOGGLE_RENAME_DIALOG: 'TOGGLE_RENAME_DIALOG',
-    TOGGLE_SHARE_DIALOG: 'TOGGLE_SHARE_DIALOG',
-    TOGGLE_ACTIONS_MENU: 'TOGGLE_ACTIONS_MENU'
+    TOGGLE_LOADING: 'TOGGLE_LOADING'
 };
 
 var initialState = {
     d2: null,
     isLoading: false,
     actions: {
-        menuIsOpen: false,
-        menuAnchorEl: null,
-        remove: {
-            dialogIsOpen: false
-        },
-        rename: {
-            dialogIsOpen: false
-        },
-        share: {
-            dialogIsOpen: false
-        },
         select: {
             favoriteModel: null
         }
@@ -89,28 +73,6 @@ var actions = function actions() {
     var action = arguments[1];
 
     switch (action.type) {
-        case actionTypes.TOGGLE_ACTIONS_MENU:
-            return _extends({}, state, { menuIsOpen: !state.menuIsOpen });
-        case actionTypes.SET_ACTIONS_MENU_ANCHOR_EL:
-            return _extends({}, state, { menuAnchorEl: action.payload });
-        case actionTypes.TOGGLE_SHARE_DIALOG:
-            return _extends({}, state, {
-                share: _extends({}, state.share, {
-                    dialogIsOpen: !state.share.dialogIsOpen
-                })
-            });
-        case actionTypes.TOGGLE_DELETE_DIALOG:
-            return _extends({}, state, {
-                remove: _extends({}, state.remove, {
-                    dialogIsOpen: !state.remove.dialogIsOpen
-                })
-            });
-        case actionTypes.TOGGLE_RENAME_DIALOG:
-            return _extends({}, state, {
-                rename: _extends({}, state.rename, {
-                    dialogIsOpen: !state.rename.dialogIsOpen
-                })
-            });
         case actionTypes.SET_SELECTED_FAVORITE:
             return _extends({}, state, { select: { favoriteModel: action.payload } });
         default:

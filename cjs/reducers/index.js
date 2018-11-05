@@ -16,7 +16,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var actionTypes = exports.actionTypes = {
     SET_D2: 'SET_D2',
     SET_FAVORITE_TYPE: 'SET_FAVORITE_TYPE',
-    SET_ACTIONS_MENU_ANCHOR_EL: 'SET_ACTIONS_MENU_ANCHOR_EL',
     SET_SORT_ORDER: 'SET_SORT_ORDER',
     SET_SORT_COLUMN: 'SET_SORT_COLUMN',
     SET_DATA: 'SET_DATA',
@@ -27,28 +26,13 @@ var actionTypes = exports.actionTypes = {
     SET_ROWS_PER_PAGE: 'SET_ROWS_PER_PAGE',
     SET_TOTAL_RECORDS: 'SET_TOTAL_RECORDS',
     SET_SELECTED_FAVORITE: 'SET_SELECTED_FAVORITE',
-    TOGGLE_LOADING: 'TOGGLE_LOADING',
-    TOGGLE_DELETE_DIALOG: 'TOGGLE_DELETE_DIALOG',
-    TOGGLE_RENAME_DIALOG: 'TOGGLE_RENAME_DIALOG',
-    TOGGLE_SHARE_DIALOG: 'TOGGLE_SHARE_DIALOG',
-    TOGGLE_ACTIONS_MENU: 'TOGGLE_ACTIONS_MENU'
+    TOGGLE_LOADING: 'TOGGLE_LOADING'
 };
 
 var initialState = {
     d2: null,
     isLoading: false,
     actions: {
-        menuIsOpen: false,
-        menuAnchorEl: null,
-        remove: {
-            dialogIsOpen: false
-        },
-        rename: {
-            dialogIsOpen: false
-        },
-        share: {
-            dialogIsOpen: false
-        },
         select: {
             favoriteModel: null
         }
@@ -101,28 +85,6 @@ var actions = function actions() {
     var action = arguments[1];
 
     switch (action.type) {
-        case actionTypes.TOGGLE_ACTIONS_MENU:
-            return (0, _extends3.default)({}, state, { menuIsOpen: !state.menuIsOpen });
-        case actionTypes.SET_ACTIONS_MENU_ANCHOR_EL:
-            return (0, _extends3.default)({}, state, { menuAnchorEl: action.payload });
-        case actionTypes.TOGGLE_SHARE_DIALOG:
-            return (0, _extends3.default)({}, state, {
-                share: (0, _extends3.default)({}, state.share, {
-                    dialogIsOpen: !state.share.dialogIsOpen
-                })
-            });
-        case actionTypes.TOGGLE_DELETE_DIALOG:
-            return (0, _extends3.default)({}, state, {
-                remove: (0, _extends3.default)({}, state.remove, {
-                    dialogIsOpen: !state.remove.dialogIsOpen
-                })
-            });
-        case actionTypes.TOGGLE_RENAME_DIALOG:
-            return (0, _extends3.default)({}, state, {
-                rename: (0, _extends3.default)({}, state.rename, {
-                    dialogIsOpen: !state.rename.dialogIsOpen
-                })
-            });
         case actionTypes.SET_SELECTED_FAVORITE:
             return (0, _extends3.default)({}, state, { select: { favoriteModel: action.payload } });
         default:

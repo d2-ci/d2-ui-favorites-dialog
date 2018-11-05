@@ -83,7 +83,8 @@ var FavoritesDialog = function (_Component) {
                 open = _props.open,
                 type = _props.type,
                 onFavoriteSelect = _props.onFavoriteSelect,
-                onRequestClose = _props.onRequestClose;
+                onRequestClose = _props.onRequestClose,
+                refreshData = _props.refreshData;
 
 
             return _react2.default.createElement(
@@ -92,6 +93,7 @@ var FavoritesDialog = function (_Component) {
                 _react2.default.createElement(_Favorites2.default, {
                     open: open,
                     type: type,
+                    refreshData: refreshData,
                     onFavoriteSelect: onFavoriteSelect,
                     onRequestClose: onRequestClose
                 })

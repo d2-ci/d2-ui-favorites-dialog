@@ -3,11 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.changePage = exports.setRowsPerPage = exports.setPage = exports.fetchData = exports.sortData = exports.filterData = exports.searchData = exports.setCreatedByValue = exports.setTotalRecords = exports.setSearchValue = exports.setSortColumn = exports.setSortOrder = exports.setData = exports.setFavoriteType = exports.toggleShareDialog = exports.setD2 = exports.renameFavorite = exports.toggleRenameDialog = exports.deleteFavorite = exports.toggleDeleteDialog = exports.selectFavorite = exports.setActionsMenuAnchorEl = exports.toggleActionsMenu = exports.toggleLoading = undefined;
-
-var _stringify = require('babel-runtime/core-js/json/stringify');
-
-var _stringify2 = _interopRequireDefault(_stringify);
+exports.changePage = exports.setRowsPerPage = exports.setPage = exports.fetchData = exports.sortData = exports.filterData = exports.searchData = exports.setCreatedByValue = exports.setTotalRecords = exports.setSearchValue = exports.setSortColumn = exports.setSortOrder = exports.setData = exports.setFavoriteType = exports.setD2 = exports.selectFavorite = exports.toggleLoading = undefined;
 
 var _reducers = require('../reducers');
 
@@ -21,101 +17,11 @@ var toggleLoading = exports.toggleLoading = function toggleLoading() {
     return { type: _reducers.actionTypes.TOGGLE_LOADING };
 };
 
-// actions context menu
-var toggleActionsMenu = exports.toggleActionsMenu = function toggleActionsMenu() {
-    return {
-        type: _reducers.actionTypes.TOGGLE_ACTIONS_MENU
-    };
-};
-
-var setActionsMenuAnchorEl = exports.setActionsMenuAnchorEl = function setActionsMenuAnchorEl(el) {
-    return {
-        type: _reducers.actionTypes.SET_ACTIONS_MENU_ANCHOR_EL,
-        payload: el
-    };
-};
-
 // select
 var selectFavorite = exports.selectFavorite = function selectFavorite(model) {
     return {
         type: _reducers.actionTypes.SET_SELECTED_FAVORITE,
         payload: model
-    };
-};
-
-// delete
-var toggleDeleteDialog = exports.toggleDeleteDialog = function toggleDeleteDialog() {
-    return {
-        type: _reducers.actionTypes.TOGGLE_DELETE_DIALOG
-    };
-};
-
-var deleteFavorite = exports.deleteFavorite = function deleteFavorite(event) {
-    return function (dispatch, getState) {
-        var state = getState();
-        var selectedFavorite = state.actions.select.favoriteModel;
-
-        if (selectedFavorite) {
-            selectedFavorite.delete().then(function () {
-                dispatch(toggleDeleteDialog());
-                dispatch(fetchData());
-            }).catch(function (error) {
-                return _loglevel2.default.error('favorites: delete error', error);
-            });
-        }
-    };
-};
-
-// rename
-var toggleRenameDialog = exports.toggleRenameDialog = function toggleRenameDialog() {
-    return {
-        type: _reducers.actionTypes.TOGGLE_RENAME_DIALOG
-    };
-};
-
-var renameFavorite = exports.renameFavorite = function renameFavorite(form) {
-    return function (dispatch, getState) {
-        var state = getState();
-        var favoriteModel = state.actions.select.favoriteModel;
-        var newName = form.newName;
-        var newDescription = form.newDescription;
-        var api = void 0;
-
-        if (favoriteModel) {
-            api = state.d2.Api.getApi();
-
-            // the whole model is required for validation
-            state.d2.models[state.filtering.type].get(favoriteModel.id).then(function (model) {
-                model.name = newName;
-                model.description = newDescription;
-
-                model.validate().then(function (validationStatus) {
-                    if (validationStatus.status === true) {
-                        var payload = {
-                            // can be empty
-                            description: newDescription
-                        };
-
-                        if (newName) {
-                            payload.name = newName;
-                        }
-
-                        if (payload.name) {
-                            api.request('PATCH', model.href, (0, _stringify2.default)(payload)).then(function (response) {
-                                dispatch(toggleRenameDialog());
-                                // refresh data
-                                dispatch(fetchData());
-                            }).catch(function (error) {
-                                _loglevel2.default.error('favorites: rename error', error);
-                                dispatch(toggleRenameDialog());
-                            });
-                        }
-                    }
-                });
-            }).catch(function (error) {
-                _loglevel2.default.error('favorites: favorite (' + favoriteModel.id + ') not found (' + error + ')');
-            });
-        }
     };
 };
 
@@ -127,12 +33,6 @@ var setD2 = exports.setD2 = function setD2(d2) {
     };
 };
 
-// share
-var toggleShareDialog = exports.toggleShareDialog = function toggleShareDialog() {
-    return {
-        type: _reducers.actionTypes.TOGGLE_SHARE_DIALOG
-    };
-};
 var setFavoriteType = exports.setFavoriteType = function setFavoriteType(type) {
     return {
         type: _reducers.actionTypes.SET_FAVORITE_TYPE,
