@@ -1,6 +1,5 @@
 {
   "name": "@dhis2/d2-ui-favorites-dialog",
-  "version": "5.0.1",
   "description": "Favorite Dialog component for DHIS2",
   "main": "./index.js",
   "module": "./index.js",
@@ -33,5 +32,6 @@
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "version": "5.0.1"
 }
