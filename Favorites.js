@@ -62,7 +62,7 @@ var Favorites = function (_Component) {
                     null,
                     React.createElement(
                         Button,
-                        { onClick: onRequestClose },
+                        { color: 'primary', onClick: onRequestClose },
                         'Close'
                     )
                 )
