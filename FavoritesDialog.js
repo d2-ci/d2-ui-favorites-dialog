@@ -69,6 +69,19 @@ var FavoritesDialog = function (_Component) {
     return FavoritesDialog;
 }(Component);
 
+FavoritesDialog.defaultProps = {
+    refreshData: false
+};
+
+FavoritesDialog.propTypes = {
+    open: PropTypes.bool.isRequired,
+    refreshData: PropTypes.bool,
+    type: PropTypes.oneOf(['chart', 'eventChart', 'reportTable', 'eventReport', 'map']).isRequired,
+    d2: PropTypes.object.isRequired,
+    onRequestClose: PropTypes.func.isRequired,
+    onFavoriteSelect: PropTypes.func.isRequired
+};
+
 FavoritesDialog.childContextTypes = {
     d2: PropTypes.object.isRequired
 };
