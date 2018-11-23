@@ -49,8 +49,7 @@ var FavoritesDialog = function (_Component) {
                 type = _props.type,
                 onFavoriteSelect = _props.onFavoriteSelect,
                 onRequestClose = _props.onRequestClose,
-                refreshData = _props.refreshData,
-                dialogMaxWidth = _props.dialogMaxWidth;
+                refreshData = _props.refreshData;
 
 
             return React.createElement(
@@ -61,8 +60,7 @@ var FavoritesDialog = function (_Component) {
                     type: type,
                     refreshData: refreshData,
                     onFavoriteSelect: onFavoriteSelect,
-                    onRequestClose: onRequestClose,
-                    dialogMaxWidth: dialogMaxWidth
+                    onRequestClose: onRequestClose
                 })
             );
         }
@@ -72,7 +70,6 @@ var FavoritesDialog = function (_Component) {
 }(Component);
 
 FavoritesDialog.defaultProps = {
-    dialogMaxWidth: 'md',
     refreshData: false
 };
 
@@ -82,8 +79,7 @@ FavoritesDialog.propTypes = {
     type: PropTypes.oneOf(['chart', 'eventChart', 'reportTable', 'eventReport', 'map']).isRequired,
     d2: PropTypes.object.isRequired,
     onRequestClose: PropTypes.func.isRequired,
-    onFavoriteSelect: PropTypes.func.isRequired,
-    dialogMaxWidth: PropTypes.string
+    onFavoriteSelect: PropTypes.func.isRequired
 };
 
 FavoritesDialog.childContextTypes = {

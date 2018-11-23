@@ -40,8 +40,7 @@ var Favorites = function (_Component) {
             var _props = this.props,
                 open = _props.open,
                 onRequestClose = _props.onRequestClose,
-                onFavoriteSelect = _props.onFavoriteSelect,
-                dialogMaxWidth = _props.dialogMaxWidth;
+                onFavoriteSelect = _props.onFavoriteSelect;
 
 
             var handleOnFavoriteSelect = function handleOnFavoriteSelect(id) {
@@ -52,7 +51,7 @@ var Favorites = function (_Component) {
 
             return React.createElement(
                 Dialog,
-                { open: open, onClose: onRequestClose, disableEnforceFocus: true, maxWidth: dialogMaxWidth },
+                { open: open, onClose: onRequestClose, disableEnforceFocus: true, maxWidth: 'lg' },
                 React.createElement(
                     DialogContent,
                     null,
@@ -79,11 +78,9 @@ Favorites.propTypes = {
     open: PropTypes.bool.isRequired,
     onRequestClose: PropTypes.func.isRequired,
     onFavoriteSelect: PropTypes.func.isRequired,
-    dialogMaxWidth: PropTypes.string.isRequired,
     dataIsLoaded: PropTypes.bool.isRequired,
     refreshData: PropTypes.bool.isRequired,
     fetchData: PropTypes.func.isRequired
-
 };
 
 var mapStateToProps = function mapStateToProps(state) {
