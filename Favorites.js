@@ -5,6 +5,7 @@ import _possibleConstructorReturn from 'babel-runtime/helpers/possibleConstructo
 import _inherits from 'babel-runtime/helpers/inherits';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -50,7 +51,7 @@ var Favorites = function (_Component) {
 
             return React.createElement(
                 Dialog,
-                { open: open, onClose: onRequestClose, disableEnforceFocus: true, maxWidth: 'md' },
+                { open: open, onClose: onRequestClose, disableEnforceFocus: true, maxWidth: 'lg' },
                 React.createElement(
                     DialogContent,
                     null,
@@ -72,6 +73,15 @@ var Favorites = function (_Component) {
 
     return Favorites;
 }(Component);
+
+Favorites.propTypes = {
+    open: PropTypes.bool.isRequired,
+    onRequestClose: PropTypes.func.isRequired,
+    onFavoriteSelect: PropTypes.func.isRequired,
+    dataIsLoaded: PropTypes.bool.isRequired,
+    refreshData: PropTypes.bool.isRequired,
+    fetchData: PropTypes.func.isRequired
+};
 
 var mapStateToProps = function mapStateToProps(state) {
     return {
