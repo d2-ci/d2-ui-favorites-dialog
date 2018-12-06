@@ -73,7 +73,6 @@ var EnhancedTable = function EnhancedTable(props) {
         order = props.order,
         column = props.column,
         sortData = props.sortData,
-        selectFavorite = props.selectFavorite,
         onFavoriteSelect = props.onFavoriteSelect;
 
 
