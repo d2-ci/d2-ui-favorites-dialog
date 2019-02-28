@@ -1,19 +1,60 @@
-import _Object$getPrototypeOf from "babel-runtime/core-js/object/get-prototype-of";
-import _classCallCheck from "babel-runtime/helpers/classCallCheck";
-import _createClass from "babel-runtime/helpers/createClass";
-import _possibleConstructorReturn from "babel-runtime/helpers/possibleConstructorReturn";
-import _inherits from "babel-runtime/helpers/inherits";
-import React, { Component } from "react";
-import { connect } from "react-redux";
+"use strict";
 
-import { withStyles } from "@material-ui/core/styles";
-import MenuItem from "@material-ui/core/MenuItem";
-import Select from "@material-ui/core/Select";
-import TextField from "@material-ui/core/TextField";
-import Toolbar from "@material-ui/core/Toolbar";
-import Tooltip from "@material-ui/core/Tooltip";
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
 
-import { filterData, searchData } from "./actions";
+var _getPrototypeOf = require("babel-runtime/core-js/object/get-prototype-of");
+
+var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+var _classCallCheck2 = require("babel-runtime/helpers/classCallCheck");
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = require("babel-runtime/helpers/createClass");
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = require("babel-runtime/helpers/possibleConstructorReturn");
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = require("babel-runtime/helpers/inherits");
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
+var _react = require("react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = require("react-redux");
+
+var _styles = require("@material-ui/core/styles");
+
+var _MenuItem = require("@material-ui/core/MenuItem");
+
+var _MenuItem2 = _interopRequireDefault(_MenuItem);
+
+var _Select = require("@material-ui/core/Select");
+
+var _Select2 = _interopRequireDefault(_Select);
+
+var _TextField = require("@material-ui/core/TextField");
+
+var _TextField2 = _interopRequireDefault(_TextField);
+
+var _Toolbar = require("@material-ui/core/Toolbar");
+
+var _Toolbar2 = _interopRequireDefault(_Toolbar);
+
+var _Tooltip = require("@material-ui/core/Tooltip");
+
+var _Tooltip2 = _interopRequireDefault(_Tooltip);
+
+var _actions = require("./actions");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var toolbarStyles = function toolbarStyles() {
     return {
@@ -30,29 +71,29 @@ var toolbarStyles = function toolbarStyles() {
 };
 
 var EnhancedToolbar = function (_Component) {
-    _inherits(EnhancedToolbar, _Component);
+    (0, _inherits3.default)(EnhancedToolbar, _Component);
 
     function EnhancedToolbar() {
         var _ref;
 
         var _temp, _this, _ret;
 
-        _classCallCheck(this, EnhancedToolbar);
+        (0, _classCallCheck3.default)(this, EnhancedToolbar);
 
         for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
             args[_key] = arguments[_key];
         }
 
-        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = EnhancedToolbar.__proto__ || _Object$getPrototypeOf(EnhancedToolbar)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
+        return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = EnhancedToolbar.__proto__ || (0, _getPrototypeOf2.default)(EnhancedToolbar)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
             filterTooltipOpen: false
         }, _this.showFilterTooltip = function () {
             _this.setState({ filterTooltipOpen: true });
         }, _this.hideFilterTooltip = function () {
             _this.setState({ filterTooltipOpen: false });
-        }, _temp), _possibleConstructorReturn(_this, _ret);
+        }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
     }
 
-    _createClass(EnhancedToolbar, [{
+    (0, _createClass3.default)(EnhancedToolbar, [{
         key: "render",
         value: function render() {
             var _props = this.props,
@@ -63,26 +104,26 @@ var EnhancedToolbar = function (_Component) {
                 filterData = _props.filterData;
 
 
-            return React.createElement(
-                Toolbar,
+            return _react2.default.createElement(
+                _Toolbar2.default,
                 null,
-                React.createElement(TextField, {
+                _react2.default.createElement(_TextField2.default, {
                     type: "search",
                     label: "Search by name",
                     className: classes.search,
                     value: searchValue,
                     onChange: searchData
                 }),
-                React.createElement("div", { className: classes.spacer }),
-                React.createElement(
-                    Tooltip,
+                _react2.default.createElement("div", { className: classes.spacer }),
+                _react2.default.createElement(
+                    _Tooltip2.default,
                     {
                         className: classes.filter,
                         title: "Filter list",
                         open: this.state.filterTooltipOpen
                     },
-                    React.createElement(
-                        Select,
+                    _react2.default.createElement(
+                        _Select2.default,
                         {
                             disableUnderline: true,
                             value: createdByValue,
@@ -93,18 +134,18 @@ var EnhancedToolbar = function (_Component) {
                                 onEnter: this.hideFilterTooltip
                             }
                         },
-                        React.createElement(
-                            MenuItem,
+                        _react2.default.createElement(
+                            _MenuItem2.default,
                             { value: "all" },
                             "Show all"
                         ),
-                        React.createElement(
-                            MenuItem,
+                        _react2.default.createElement(
+                            _MenuItem2.default,
                             { value: "byme" },
                             "Created by me"
                         ),
-                        React.createElement(
-                            MenuItem,
+                        _react2.default.createElement(
+                            _MenuItem2.default,
                             { value: "byothers" },
                             "Created by others"
                         )
@@ -113,9 +154,8 @@ var EnhancedToolbar = function (_Component) {
             );
         }
     }]);
-
     return EnhancedToolbar;
-}(Component);
+}(_react.Component);
 
 var mapStateToProps = function mapStateToProps(state) {
     return {
@@ -125,8 +165,8 @@ var mapStateToProps = function mapStateToProps(state) {
 };
 
 var mapDispatchToProps = {
-    searchData: searchData,
-    filterData: filterData
+    searchData: _actions.searchData,
+    filterData: _actions.filterData
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(toolbarStyles)(EnhancedToolbar));
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)((0, _styles.withStyles)(toolbarStyles)(EnhancedToolbar));
