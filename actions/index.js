@@ -1,71 +1,83 @@
-import { actionTypes } from '../reducers';
-import log from 'loglevel';
+'use strict';
 
-export var toggleLoading = function toggleLoading() {
-    return { type: actionTypes.TOGGLE_LOADING };
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.changePage = exports.setRowsPerPage = exports.setPage = exports.fetchData = exports.sortData = exports.filterData = exports.searchData = exports.setCreatedByValue = exports.setTotalRecords = exports.setSearchValue = exports.setSortColumn = exports.setSortOrder = exports.setData = exports.setFavoriteType = exports.setD2 = exports.selectFavorite = exports.toggleLoading = undefined;
+
+var _reducers = require('../reducers');
+
+var _loglevel = require('loglevel');
+
+var _loglevel2 = _interopRequireDefault(_loglevel);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var toggleLoading = exports.toggleLoading = function toggleLoading() {
+    return { type: _reducers.actionTypes.TOGGLE_LOADING };
 };
 
 // select
-export var selectFavorite = function selectFavorite(model) {
+var selectFavorite = exports.selectFavorite = function selectFavorite(model) {
     return {
-        type: actionTypes.SET_SELECTED_FAVORITE,
+        type: _reducers.actionTypes.SET_SELECTED_FAVORITE,
         payload: model
     };
 };
 
 // d2
-export var setD2 = function setD2(d2) {
+var setD2 = exports.setD2 = function setD2(d2) {
     return {
-        type: actionTypes.SET_D2,
+        type: _reducers.actionTypes.SET_D2,
         payload: d2
     };
 };
 
-export var setFavoriteType = function setFavoriteType(type) {
+var setFavoriteType = exports.setFavoriteType = function setFavoriteType(type) {
     return {
-        type: actionTypes.SET_FAVORITE_TYPE,
+        type: _reducers.actionTypes.SET_FAVORITE_TYPE,
         payload: type
     };
 };
 
 // data
-export var setData = function setData(data) {
+var setData = exports.setData = function setData(data) {
     return {
-        type: actionTypes.SET_DATA,
+        type: _reducers.actionTypes.SET_DATA,
         payload: data
     };
 };
-export var setSortOrder = function setSortOrder(order) {
+var setSortOrder = exports.setSortOrder = function setSortOrder(order) {
     return {
-        type: actionTypes.SET_SORT_ORDER,
+        type: _reducers.actionTypes.SET_SORT_ORDER,
         payload: order
     };
 };
-export var setSortColumn = function setSortColumn(column) {
+var setSortColumn = exports.setSortColumn = function setSortColumn(column) {
     return {
-        type: actionTypes.SET_SORT_COLUMN,
+        type: _reducers.actionTypes.SET_SORT_COLUMN,
         payload: column
     };
 };
-export var setSearchValue = function setSearchValue(search) {
+var setSearchValue = exports.setSearchValue = function setSearchValue(search) {
     return {
-        type: actionTypes.SET_SEARCH_VALUE,
+        type: _reducers.actionTypes.SET_SEARCH_VALUE,
         payload: search
     };
 };
-export var setTotalRecords = function setTotalRecords(total) {
+var setTotalRecords = exports.setTotalRecords = function setTotalRecords(total) {
     return {
-        type: actionTypes.SET_TOTAL_RECORDS,
+        type: _reducers.actionTypes.SET_TOTAL_RECORDS,
         payload: total
     };
 };
-export var setCreatedByValue = function setCreatedByValue(filter) {
+var setCreatedByValue = exports.setCreatedByValue = function setCreatedByValue(filter) {
     return {
-        type: actionTypes.SET_CREATEDBY_VALUE,
+        type: _reducers.actionTypes.SET_CREATEDBY_VALUE,
         payload: filter
     };
 };
-export var searchData = function searchData(event) {
+var searchData = exports.searchData = function searchData(event) {
     var searchValue = event.target.value;
 
     return function (dispatch, getState) {
@@ -73,7 +85,7 @@ export var searchData = function searchData(event) {
         dispatch(fetchData());
     };
 };
-export var filterData = function filterData(event) {
+var filterData = exports.filterData = function filterData(event) {
     var createdByValue = event.target.value;
 
     return function (dispatch, getState) {
@@ -81,7 +93,7 @@ export var filterData = function filterData(event) {
         dispatch(fetchData());
     };
 };
-export var sortData = function sortData(event, column) {
+var sortData = exports.sortData = function sortData(event, column) {
     return function (dispatch, getState) {
         var state = getState();
 
@@ -104,7 +116,7 @@ export var sortData = function sortData(event, column) {
         dispatch(setData(data));
     };
 };
-export var fetchData = function fetchData() {
+var fetchData = exports.fetchData = function fetchData() {
     return function (dispatch, getState) {
         var state = getState();
 
@@ -142,25 +154,25 @@ export var fetchData = function fetchData() {
             dispatch(setData(collection.toArray()));
             dispatch(toggleLoading());
         }).catch(function (error) {
-            return log.error('favorites: fetch error', error);
+            return _loglevel2.default.error('favorites: fetch error', error);
         });
     };
 };
 
 // pagination
-export var setPage = function setPage(page) {
+var setPage = exports.setPage = function setPage(page) {
     return {
-        type: actionTypes.SET_PAGE,
+        type: _reducers.actionTypes.SET_PAGE,
         payload: page
     };
 };
-export var setRowsPerPage = function setRowsPerPage(event) {
+var setRowsPerPage = exports.setRowsPerPage = function setRowsPerPage(event) {
     return {
-        type: actionTypes.SET_ROWS_PER_PAGE,
+        type: _reducers.actionTypes.SET_ROWS_PER_PAGE,
         payload: event.target.value
     };
 };
-export var changePage = function changePage(event, page) {
+var changePage = exports.changePage = function changePage(event, page) {
     return function (dispatch, getState) {
         dispatch(setPage(page));
         dispatch(fetchData());

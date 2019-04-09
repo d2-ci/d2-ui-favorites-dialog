@@ -1,16 +1,50 @@
-import React from 'react';
-import { connect } from 'react-redux';
+'use strict';
 
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableFooter from '@material-ui/core/TableFooter';
-import TableHead from '@material-ui/core/TableHead';
-import TablePagination from '@material-ui/core/TablePagination';
-import TableRow from '@material-ui/core/TableRow';
-import TableSortLabel from '@material-ui/core/TableSortLabel';
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
 
-import { changePage, setRowsPerPage, sortData, selectFavorite } from './actions';
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = require('react-redux');
+
+var _Table = require('@material-ui/core/Table');
+
+var _Table2 = _interopRequireDefault(_Table);
+
+var _TableBody = require('@material-ui/core/TableBody');
+
+var _TableBody2 = _interopRequireDefault(_TableBody);
+
+var _TableCell = require('@material-ui/core/TableCell');
+
+var _TableCell2 = _interopRequireDefault(_TableCell);
+
+var _TableFooter = require('@material-ui/core/TableFooter');
+
+var _TableFooter2 = _interopRequireDefault(_TableFooter);
+
+var _TableHead = require('@material-ui/core/TableHead');
+
+var _TableHead2 = _interopRequireDefault(_TableHead);
+
+var _TablePagination = require('@material-ui/core/TablePagination');
+
+var _TablePagination2 = _interopRequireDefault(_TablePagination);
+
+var _TableRow = require('@material-ui/core/TableRow');
+
+var _TableRow2 = _interopRequireDefault(_TableRow);
+
+var _TableSortLabel = require('@material-ui/core/TableSortLabel');
+
+var _TableSortLabel2 = _interopRequireDefault(_TableSortLabel);
+
+var _actions = require('./actions');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Time = function Time(_ref) {
     var date = _ref.date;
@@ -18,7 +52,7 @@ var Time = function Time(_ref) {
     var d = new Date(date);
     var time = d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2);
 
-    return React.createElement(
+    return _react2.default.createElement(
         'time',
         { dateTime: d.toISOString() },
         time
@@ -39,18 +73,18 @@ var EnhancedTableHead = function EnhancedTableHead(props) {
         };
     };
 
-    return React.createElement(
-        TableHead,
+    return _react2.default.createElement(
+        _TableHead2.default,
         null,
-        React.createElement(
-            TableRow,
+        _react2.default.createElement(
+            _TableRow2.default,
             null,
             columns.map(function (c) {
-                return React.createElement(
-                    TableCell,
+                return _react2.default.createElement(
+                    _TableCell2.default,
                     { key: c.id },
-                    React.createElement(
-                        TableSortLabel,
+                    _react2.default.createElement(
+                        _TableSortLabel2.default,
                         {
                             active: column === c.id,
                             direction: order,
@@ -82,22 +116,22 @@ var EnhancedTable = function EnhancedTable(props) {
         };
     };
 
-    return React.createElement(
+    return _react2.default.createElement(
         'div',
         null,
-        React.createElement(
-            Table,
+        _react2.default.createElement(
+            _Table2.default,
             null,
-            React.createElement(EnhancedTableHead, { order: order, column: column, sortData: sortData }),
-            React.createElement(
-                TableBody,
+            _react2.default.createElement(EnhancedTableHead, { order: order, column: column, sortData: sortData }),
+            _react2.default.createElement(
+                _TableBody2.default,
                 null,
                 data.map(function (favorite) {
-                    return React.createElement(
-                        TableRow,
+                    return _react2.default.createElement(
+                        _TableRow2.default,
                         { hover: true, key: favorite.id },
-                        React.createElement(
-                            TableCell,
+                        _react2.default.createElement(
+                            _TableCell2.default,
                             {
                                 padding: 'dense',
                                 onClick: clickHandler(favorite.id),
@@ -105,26 +139,26 @@ var EnhancedTable = function EnhancedTable(props) {
                             },
                             favorite.displayName
                         ),
-                        React.createElement(
-                            TableCell,
+                        _react2.default.createElement(
+                            _TableCell2.default,
                             { padding: 'dense' },
-                            React.createElement(Time, { date: favorite.created })
+                            _react2.default.createElement(Time, { date: favorite.created })
                         ),
-                        React.createElement(
-                            TableCell,
+                        _react2.default.createElement(
+                            _TableCell2.default,
                             { padding: 'dense' },
-                            React.createElement(Time, { date: favorite.lastUpdated })
+                            _react2.default.createElement(Time, { date: favorite.lastUpdated })
                         )
                     );
                 })
             ),
-            React.createElement(
-                TableFooter,
+            _react2.default.createElement(
+                _TableFooter2.default,
                 null,
-                React.createElement(
-                    TableRow,
+                _react2.default.createElement(
+                    _TableRow2.default,
                     null,
-                    React.createElement(TablePagination, {
+                    _react2.default.createElement(_TablePagination2.default, {
                         count: totalRecords,
                         rowsPerPage: rowsPerPage,
                         page: page,
@@ -151,10 +185,10 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
 };
 
 var mapDispatchToProps = {
-    setRowsPerPage: setRowsPerPage,
-    changePage: changePage,
-    sortData: sortData,
-    selectFavorite: selectFavorite
+    setRowsPerPage: _actions.setRowsPerPage,
+    changePage: _actions.changePage,
+    sortData: _actions.sortData,
+    selectFavorite: _actions.selectFavorite
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(EnhancedTable);
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(EnhancedTable);

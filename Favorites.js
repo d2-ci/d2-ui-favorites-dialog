@@ -1,32 +1,76 @@
-import _Object$getPrototypeOf from 'babel-runtime/core-js/object/get-prototype-of';
-import _classCallCheck from 'babel-runtime/helpers/classCallCheck';
-import _createClass from 'babel-runtime/helpers/createClass';
-import _possibleConstructorReturn from 'babel-runtime/helpers/possibleConstructorReturn';
-import _inherits from 'babel-runtime/helpers/inherits';
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+'use strict';
 
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import Button from '@material-ui/core/Button';
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
 
-import EnhancedToolbar from './EnhancedToolbar';
-import EnhancedTable from './EnhancedTable';
+var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
 
-import { fetchData } from './actions';
+var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = require('babel-runtime/helpers/createClass');
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = require('babel-runtime/helpers/inherits');
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = require('react-redux');
+
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _Dialog = require('@material-ui/core/Dialog');
+
+var _Dialog2 = _interopRequireDefault(_Dialog);
+
+var _DialogActions = require('@material-ui/core/DialogActions');
+
+var _DialogActions2 = _interopRequireDefault(_DialogActions);
+
+var _DialogContent = require('@material-ui/core/DialogContent');
+
+var _DialogContent2 = _interopRequireDefault(_DialogContent);
+
+var _Button = require('@material-ui/core/Button');
+
+var _Button2 = _interopRequireDefault(_Button);
+
+var _EnhancedToolbar = require('./EnhancedToolbar');
+
+var _EnhancedToolbar2 = _interopRequireDefault(_EnhancedToolbar);
+
+var _EnhancedTable = require('./EnhancedTable');
+
+var _EnhancedTable2 = _interopRequireDefault(_EnhancedTable);
+
+var _actions = require('./actions');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Favorites = function (_Component) {
-    _inherits(Favorites, _Component);
+    (0, _inherits3.default)(Favorites, _Component);
 
     function Favorites() {
-        _classCallCheck(this, Favorites);
-
-        return _possibleConstructorReturn(this, (Favorites.__proto__ || _Object$getPrototypeOf(Favorites)).apply(this, arguments));
+        (0, _classCallCheck3.default)(this, Favorites);
+        return (0, _possibleConstructorReturn3.default)(this, (Favorites.__proto__ || (0, _getPrototypeOf2.default)(Favorites)).apply(this, arguments));
     }
 
-    _createClass(Favorites, [{
+    (0, _createClass3.default)(Favorites, [{
         key: 'componentWillReceiveProps',
         value: function componentWillReceiveProps(nextProps) {
             // fetch data only the first time the dialog is open
@@ -49,20 +93,20 @@ var Favorites = function (_Component) {
                 onRequestClose();
             };
 
-            return React.createElement(
-                Dialog,
+            return _react2.default.createElement(
+                _Dialog2.default,
                 { open: open, onClose: onRequestClose, disableEnforceFocus: true, maxWidth: 'lg' },
-                React.createElement(
-                    DialogContent,
+                _react2.default.createElement(
+                    _DialogContent2.default,
                     null,
-                    React.createElement(EnhancedToolbar, null),
-                    React.createElement(EnhancedTable, { onFavoriteSelect: handleOnFavoriteSelect })
+                    _react2.default.createElement(_EnhancedToolbar2.default, null),
+                    _react2.default.createElement(_EnhancedTable2.default, { onFavoriteSelect: handleOnFavoriteSelect })
                 ),
-                React.createElement(
-                    DialogActions,
+                _react2.default.createElement(
+                    _DialogActions2.default,
                     null,
-                    React.createElement(
-                        Button,
+                    _react2.default.createElement(
+                        _Button2.default,
                         { color: 'primary', onClick: onRequestClose },
                         'Close'
                     )
@@ -70,17 +114,16 @@ var Favorites = function (_Component) {
             );
         }
     }]);
-
     return Favorites;
-}(Component);
+}(_react.Component);
 
 Favorites.propTypes = {
-    open: PropTypes.bool.isRequired,
-    onRequestClose: PropTypes.func.isRequired,
-    onFavoriteSelect: PropTypes.func.isRequired,
-    dataIsLoaded: PropTypes.bool.isRequired,
-    refreshData: PropTypes.bool.isRequired,
-    fetchData: PropTypes.func.isRequired
+    open: _propTypes2.default.bool.isRequired,
+    onRequestClose: _propTypes2.default.func.isRequired,
+    onFavoriteSelect: _propTypes2.default.func.isRequired,
+    dataIsLoaded: _propTypes2.default.bool.isRequired,
+    refreshData: _propTypes2.default.bool.isRequired,
+    fetchData: _propTypes2.default.func.isRequired
 };
 
 var mapStateToProps = function mapStateToProps(state) {
@@ -90,7 +133,7 @@ var mapStateToProps = function mapStateToProps(state) {
 };
 
 var mapDispatchToProps = {
-    fetchData: fetchData
+    fetchData: _actions.fetchData
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Favorites);
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Favorites);

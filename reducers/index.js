@@ -1,7 +1,19 @@
-import _extends from 'babel-runtime/helpers/extends';
-import { combineReducers } from 'redux';
+'use strict';
 
-export var actionTypes = {
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.sorting = exports.actionTypes = undefined;
+
+var _extends2 = require('babel-runtime/helpers/extends');
+
+var _extends3 = _interopRequireDefault(_extends2);
+
+var _redux = require('redux');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var actionTypes = exports.actionTypes = {
     SET_D2: 'SET_D2',
     SET_FAVORITE_TYPE: 'SET_FAVORITE_TYPE',
     SET_SORT_ORDER: 'SET_SORT_ORDER',
@@ -74,21 +86,21 @@ var actions = function actions() {
 
     switch (action.type) {
         case actionTypes.SET_SELECTED_FAVORITE:
-            return _extends({}, state, { select: { favoriteModel: action.payload } });
+            return (0, _extends3.default)({}, state, { select: { favoriteModel: action.payload } });
         default:
             return state;
     }
 };
 
-export var sorting = function sorting() {
+var sorting = exports.sorting = function sorting() {
     var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState.data.sorting;
     var action = arguments[1];
 
     switch (action.type) {
         case actionTypes.SET_SORT_ORDER:
-            return _extends({}, state, { order: action.payload });
+            return (0, _extends3.default)({}, state, { order: action.payload });
         case actionTypes.SET_SORT_COLUMN:
-            return _extends({}, state, { column: action.payload });
+            return (0, _extends3.default)({}, state, { column: action.payload });
         default:
             return state;
     }
@@ -100,9 +112,9 @@ var data = function data() {
 
     switch (action.type) {
         case actionTypes.SET_DATA:
-            return _extends({}, state, { records: action.payload });
+            return (0, _extends3.default)({}, state, { records: action.payload });
         case actionTypes.SET_TOTAL_RECORDS:
-            return _extends({}, state, { totalRecords: action.payload });
+            return (0, _extends3.default)({}, state, { totalRecords: action.payload });
         default:
             return state;
     }
@@ -114,9 +126,9 @@ var pagination = function pagination() {
 
     switch (action.type) {
         case actionTypes.SET_PAGE:
-            return _extends({}, state, { page: action.payload });
+            return (0, _extends3.default)({}, state, { page: action.payload });
         case actionTypes.SET_ROWS_PER_PAGE:
-            return _extends({}, state, { rowsPerPage: action.payload });
+            return (0, _extends3.default)({}, state, { rowsPerPage: action.payload });
         default:
             return state;
     }
@@ -128,17 +140,17 @@ var filtering = function filtering() {
 
     switch (action.type) {
         case actionTypes.SET_FAVORITE_TYPE:
-            return _extends({}, state, { type: action.payload });
+            return (0, _extends3.default)({}, state, { type: action.payload });
         case actionTypes.SET_CREATEDBY_VALUE:
-            return _extends({}, state, { createdByValue: action.payload });
+            return (0, _extends3.default)({}, state, { createdByValue: action.payload });
         case actionTypes.SET_SEARCH_VALUE:
-            return _extends({}, state, { searchValue: action.payload });
+            return (0, _extends3.default)({}, state, { searchValue: action.payload });
         default:
             return state;
     }
 };
 
-export default combineReducers({
+exports.default = (0, _redux.combineReducers)({
     loading: loading,
     actions: actions,
     pagination: pagination,

@@ -1,40 +1,75 @@
-import _Object$getPrototypeOf from 'babel-runtime/core-js/object/get-prototype-of';
-import _classCallCheck from 'babel-runtime/helpers/classCallCheck';
-import _createClass from 'babel-runtime/helpers/createClass';
-import _possibleConstructorReturn from 'babel-runtime/helpers/possibleConstructorReturn';
-import _inherits from 'babel-runtime/helpers/inherits';
-import React, { Component } from 'react';
-import { Provider } from 'react-redux';
-import PropTypes from 'prop-types';
+'use strict';
 
-import Favorites from './Favorites';
-import configureStore from './configureStore';
-import { setFavoriteType, setD2 } from './actions';
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
 
-var store = configureStore();
+var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
+
+var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = require('babel-runtime/helpers/createClass');
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = require('babel-runtime/helpers/inherits');
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = require('react-redux');
+
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _Favorites = require('./Favorites');
+
+var _Favorites2 = _interopRequireDefault(_Favorites);
+
+var _configureStore = require('./configureStore');
+
+var _configureStore2 = _interopRequireDefault(_configureStore);
+
+var _actions = require('./actions');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var store = (0, _configureStore2.default)();
 
 var FavoritesDialog = function (_Component) {
-    _inherits(FavoritesDialog, _Component);
+    (0, _inherits3.default)(FavoritesDialog, _Component);
 
     function FavoritesDialog(props) {
-        _classCallCheck(this, FavoritesDialog);
+        (0, _classCallCheck3.default)(this, FavoritesDialog);
 
         // sync type prop with state
-        var _this = _possibleConstructorReturn(this, (FavoritesDialog.__proto__ || _Object$getPrototypeOf(FavoritesDialog)).call(this, props));
+        var _this = (0, _possibleConstructorReturn3.default)(this, (FavoritesDialog.__proto__ || (0, _getPrototypeOf2.default)(FavoritesDialog)).call(this, props));
 
         if (props.type) {
-            store.dispatch(setFavoriteType(props.type));
+            store.dispatch((0, _actions.setFavoriteType)(props.type));
         }
 
         if (props.d2) {
-            store.dispatch(setD2(props.d2));
+            store.dispatch((0, _actions.setD2)(props.d2));
         } else {
             console.error('no d2');
         }
         return _this;
     }
 
-    _createClass(FavoritesDialog, [{
+    (0, _createClass3.default)(FavoritesDialog, [{
         key: 'getChildContext',
         value: function getChildContext() {
             return {
@@ -52,10 +87,10 @@ var FavoritesDialog = function (_Component) {
                 refreshData = _props.refreshData;
 
 
-            return React.createElement(
-                Provider,
+            return _react2.default.createElement(
+                _reactRedux.Provider,
                 { store: store },
-                React.createElement(Favorites, {
+                _react2.default.createElement(_Favorites2.default, {
                     open: open,
                     type: type,
                     refreshData: refreshData,
@@ -65,25 +100,24 @@ var FavoritesDialog = function (_Component) {
             );
         }
     }]);
-
     return FavoritesDialog;
-}(Component);
+}(_react.Component);
 
 FavoritesDialog.defaultProps = {
     refreshData: false
 };
 
 FavoritesDialog.propTypes = {
-    open: PropTypes.bool.isRequired,
-    refreshData: PropTypes.bool,
-    type: PropTypes.oneOf(['chart', 'eventChart', 'reportTable', 'eventReport', 'map']).isRequired,
-    d2: PropTypes.object.isRequired,
-    onRequestClose: PropTypes.func.isRequired,
-    onFavoriteSelect: PropTypes.func.isRequired
+    open: _propTypes2.default.bool.isRequired,
+    refreshData: _propTypes2.default.bool,
+    type: _propTypes2.default.oneOf(['chart', 'eventChart', 'reportTable', 'eventReport', 'map']).isRequired,
+    d2: _propTypes2.default.object.isRequired,
+    onRequestClose: _propTypes2.default.func.isRequired,
+    onFavoriteSelect: _propTypes2.default.func.isRequired
 };
 
 FavoritesDialog.childContextTypes = {
-    d2: PropTypes.object.isRequired
+    d2: _propTypes2.default.object.isRequired
 };
 
-export default FavoritesDialog;
+exports.default = FavoritesDialog;
