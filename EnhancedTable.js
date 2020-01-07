@@ -138,9 +138,14 @@ var Time = function Time(_ref) {
 var EnhancedTableHead = function EnhancedTableHead(props) {
     var order = props.order,
         column = props.column,
-        sortData = props.sortData;
+        sortData = props.sortData,
+        showTypeColumn = props.showTypeColumn;
 
-    var columns = [{ id: 'displayName', label: _d2I18n2.default.t('Name') }, { id: 'type', label: _d2I18n2.default.t('Type') }, { id: 'created', label: _d2I18n2.default.t('Created') }, { id: 'lastUpdated', label: _d2I18n2.default.t('Last updated') }];
+    var columns = [{ id: 'displayName', label: _d2I18n2.default.t('Name') }, { id: 'created', label: _d2I18n2.default.t('Created') }, { id: 'lastUpdated', label: _d2I18n2.default.t('Last updated') }];
+
+    if (showTypeColumn) {
+        columns.splice(1, 0, { id: 'type', label: _d2I18n2.default.t('Type') });
+    }
 
     var createSortHandler = function createSortHandler(column) {
         return function (event) {
@@ -182,7 +187,8 @@ var EnhancedTable = function EnhancedTable(props) {
         order = props.order,
         column = props.column,
         sortData = props.sortData,
-        onFavoriteSelect = props.onFavoriteSelect;
+        onFavoriteSelect = props.onFavoriteSelect,
+        showTypeColumn = props.showTypeColumn;
 
 
     var clickHandler = function clickHandler(id) {
@@ -197,7 +203,7 @@ var EnhancedTable = function EnhancedTable(props) {
         _react2.default.createElement(
             _Table2.default,
             null,
-            _react2.default.createElement(EnhancedTableHead, { order: order, column: column, sortData: sortData }),
+            _react2.default.createElement(EnhancedTableHead, { order: order, column: column, sortData: sortData, showTypeColumn: showTypeColumn }),
             _react2.default.createElement(
                 _TableBody2.default,
                 null,
@@ -216,7 +222,7 @@ var EnhancedTable = function EnhancedTable(props) {
                             },
                             favorite.displayName
                         ),
-                        _react2.default.createElement(
+                        showTypeColumn && _react2.default.createElement(
                             _TableCell2.default,
                             {
                                 padding: 'dense' },
