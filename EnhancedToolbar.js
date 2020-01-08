@@ -52,6 +52,10 @@ var _Tooltip = require("@material-ui/core/Tooltip");
 
 var _Tooltip2 = _interopRequireDefault(_Tooltip);
 
+var _d2I18n = require("@dhis2/d2-i18n");
+
+var _d2I18n2 = _interopRequireDefault(_d2I18n);
+
 var _actions = require("./actions");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -109,7 +113,7 @@ var EnhancedToolbar = function (_Component) {
                 null,
                 _react2.default.createElement(_TextField2.default, {
                     type: "search",
-                    label: "Search by name",
+                    label: _d2I18n2.default.t("Search by name"),
                     className: classes.search,
                     value: searchValue,
                     onChange: searchData
@@ -119,7 +123,7 @@ var EnhancedToolbar = function (_Component) {
                     _Tooltip2.default,
                     {
                         className: classes.filter,
-                        title: "Filter list",
+                        title: _d2I18n2.default.t("Filter list"),
                         open: this.state.filterTooltipOpen
                     },
                     _react2.default.createElement(
@@ -137,17 +141,17 @@ var EnhancedToolbar = function (_Component) {
                         _react2.default.createElement(
                             _MenuItem2.default,
                             { value: "all" },
-                            "Show all"
+                            _d2I18n2.default.t('Show all')
                         ),
                         _react2.default.createElement(
                             _MenuItem2.default,
                             { value: "byme" },
-                            "Created by me"
+                            _d2I18n2.default.t('Created by me')
                         ),
                         _react2.default.createElement(
                             _MenuItem2.default,
                             { value: "byothers" },
-                            "Created by others"
+                            _d2I18n2.default.t('Created by others')
                         )
                     )
                 )

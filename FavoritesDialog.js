@@ -110,7 +110,7 @@ FavoritesDialog.defaultProps = {
 FavoritesDialog.propTypes = {
     open: _propTypes2.default.bool.isRequired,
     refreshData: _propTypes2.default.bool,
-    type: _propTypes2.default.oneOf(['chart', 'eventChart', 'reportTable', 'eventReport', 'map']).isRequired,
+    type: _propTypes2.default.oneOf(['visualization', 'chart', 'eventChart', 'reportTable', 'eventReport', 'map']).isRequired,
     d2: _propTypes2.default.object.isRequired,
     onRequestClose: _propTypes2.default.func.isRequired,
     onFavoriteSelect: _propTypes2.default.func.isRequired
