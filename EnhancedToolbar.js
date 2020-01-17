@@ -125,7 +125,8 @@ var EnhancedToolbar = function (_Component) {
                 searchValue = _props.searchValue,
                 visTypeValue = _props.visTypeValue,
                 searchData = _props.searchData,
-                filterData = _props.filterData;
+                filterData = _props.filterData,
+                showTypeFilter = _props.showTypeFilter;
 
 
             return _react2.default.createElement(
@@ -149,7 +150,7 @@ var EnhancedToolbar = function (_Component) {
                     _react2.default.createElement(
                         _react.Fragment,
                         null,
-                        _react2.default.createElement(
+                        showTypeFilter ? _react2.default.createElement(
                             _Select2.default,
                             {
                                 disableUnderline: true,
@@ -175,7 +176,7 @@ var EnhancedToolbar = function (_Component) {
 
                                 return _react2.default.createElement(
                                     _MenuItem2.default,
-                                    { value: key },
+                                    { key: key, value: key },
                                     _react2.default.createElement(
                                         "span",
                                         { className: classes.menuItem },
@@ -189,7 +190,7 @@ var EnhancedToolbar = function (_Component) {
                                     )
                                 );
                             })
-                        ),
+                        ) : null,
                         _react2.default.createElement(
                             _Select2.default,
                             {

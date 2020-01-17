@@ -27,6 +27,6 @@ exports.default = _react2.default.createElement(
         ),
         _react2.default.createElement('rect', { fill: '#7B8998', mask: 'url(#mask-2)', x: '0', y: '15', width: '16', height: '1' }),
         _react2.default.createElement('rect', { fill: '#7B8998', mask: 'url(#mask-2)', x: '0', y: '0', width: '1', height: '16' }),
-        _react2.default.createElement('polygon', { stroke: '#7B8998', 'stroke-width': '1.5', fill: '#7B8998', mask: 'url(#mask-2)', points: '3 5 7 9 10 7 15 12 15 13 3 13' })
+        _react2.default.createElement('polygon', { stroke: '#7B8998', strokeWidth: '1.5', fill: '#7B8998', mask: 'url(#mask-2)', points: '3 5 7 9 10 7 15 12 15 13 3 13' })
     )
 );

@@ -102,7 +102,7 @@ var Favorites = function (_Component) {
                 _react2.default.createElement(
                     _DialogContent2.default,
                     null,
-                    _react2.default.createElement(_EnhancedToolbar2.default, null),
+                    _react2.default.createElement(_EnhancedToolbar2.default, { showTypeFilter: showTypeColumn }),
                     _react2.default.createElement(_EnhancedTable2.default, { showTypeColumn: showTypeColumn, onFavoriteSelect: handleOnFavoriteSelect })
                 ),
                 _react2.default.createElement(
