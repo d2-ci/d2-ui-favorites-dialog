@@ -86,6 +86,9 @@ var toolbarStyles = function toolbarStyles() {
         menuItem: {
             display: 'flex',
             alignItems: 'center'
+        },
+        menuIcon: {
+            marginRight: 8
         }
     };
 };
@@ -176,7 +179,11 @@ var EnhancedToolbar = function (_Component) {
                                     _react2.default.createElement(
                                         "span",
                                         { className: classes.menuItem },
-                                        value.icon,
+                                        _react2.default.createElement(
+                                            "span",
+                                            { className: classes.menuIcon },
+                                            value.icon
+                                        ),
                                         " ",
                                         value.label
                                     )
