@@ -22,6 +22,7 @@ var actionTypes = exports.actionTypes = {
     SET_SEARCH_VALUE: 'SET_SEARCH_VALUE',
     SET_FILTER_VALUE: 'SET_FILTER_VALUE',
     SET_CREATEDBY_VALUE: 'SET_CREATEDBY_VALUE',
+    SET_VIS_TYPE_VALUE: 'SET_VIS_TYPE_VALUE',
     SET_PAGE: 'SET_PAGE',
     SET_ROWS_PER_PAGE: 'SET_ROWS_PER_PAGE',
     SET_TOTAL_RECORDS: 'SET_TOTAL_RECORDS',
@@ -43,7 +44,8 @@ var initialState = {
         filtering: {
             type: 'chart',
             searchValue: '',
-            createdByValue: 'all'
+            createdByValue: 'all',
+            visTypeValue: 'all'
         },
         sorting: {
             order: 'asc',
@@ -145,6 +147,8 @@ var filtering = function filtering() {
             return (0, _extends3.default)({}, state, { createdByValue: action.payload });
         case actionTypes.SET_SEARCH_VALUE:
             return (0, _extends3.default)({}, state, { searchValue: action.payload });
+        case actionTypes.SET_VIS_TYPE_VALUE:
+            return (0, _extends3.default)({}, state, { visTypeValue: action.payload });
         default:
             return state;
     }

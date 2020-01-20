@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.changePage = exports.setRowsPerPage = exports.setPage = exports.fetchData = exports.sortData = exports.filterData = exports.searchData = exports.setCreatedByValue = exports.setTotalRecords = exports.setSearchValue = exports.setSortColumn = exports.setSortOrder = exports.setData = exports.setFavoriteType = exports.setD2 = exports.selectFavorite = exports.toggleLoading = undefined;
+exports.changePage = exports.setRowsPerPage = exports.setPage = exports.fetchData = exports.sortData = exports.filterData = exports.searchData = exports.setVisTypeValue = exports.setCreatedByValue = exports.setTotalRecords = exports.setSearchValue = exports.setSortColumn = exports.setSortOrder = exports.setData = exports.setFavoriteType = exports.setD2 = exports.selectFavorite = exports.toggleLoading = undefined;
 
 var _reducers = require('../reducers');
 
@@ -77,6 +77,12 @@ var setCreatedByValue = exports.setCreatedByValue = function setCreatedByValue(f
         payload: filter
     };
 };
+var setVisTypeValue = exports.setVisTypeValue = function setVisTypeValue(filter) {
+    return {
+        type: _reducers.actionTypes.SET_VIS_TYPE_VALUE,
+        payload: filter
+    };
+};
 var searchData = exports.searchData = function searchData(event) {
     var searchValue = event.target.value;
 
@@ -85,11 +91,19 @@ var searchData = exports.searchData = function searchData(event) {
         dispatch(fetchData());
     };
 };
-var filterData = exports.filterData = function filterData(event) {
-    var createdByValue = event.target.value;
-
+var filterData = exports.filterData = function filterData(filter, value) {
     return function (dispatch, getState) {
-        dispatch(setCreatedByValue(createdByValue));
+        switch (filter) {
+            case 'owner':
+                dispatch(setCreatedByValue(value));
+                break;
+            case 'visType':
+                dispatch(setVisTypeValue(value));
+                break;
+            default:
+                break;
+        }
+
         dispatch(fetchData());
     };
 };
@@ -137,6 +151,12 @@ var fetchData = exports.fetchData = function fetchData() {
                 case 'all':
                 default:
                     break;
+            }
+        }
+
+        if (state.filtering.visTypeValue) {
+            if (state.filtering.visTypeValue !== 'all') {
+                favoriteModel = favoriteModel.filter().on('type').equals(state.filtering.visTypeValue);
             }
         }
 

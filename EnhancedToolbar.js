@@ -4,6 +4,14 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+var _slicedToArray2 = require("babel-runtime/helpers/slicedToArray");
+
+var _slicedToArray3 = _interopRequireDefault(_slicedToArray2);
+
+var _entries = require("babel-runtime/core-js/object/entries");
+
+var _entries2 = _interopRequireDefault(_entries);
+
 var _getPrototypeOf = require("babel-runtime/core-js/object/get-prototype-of");
 
 var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
@@ -58,6 +66,10 @@ var _d2I18n2 = _interopRequireDefault(_d2I18n);
 
 var _actions = require("./actions");
 
+var _visTypes = require("./visTypes");
+
+var _visTypes2 = _interopRequireDefault(_visTypes);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var toolbarStyles = function toolbarStyles() {
@@ -70,6 +82,13 @@ var toolbarStyles = function toolbarStyles() {
         },
         filter: {
             flex: "0 0 auto"
+        },
+        menuItem: {
+            display: 'flex',
+            alignItems: 'center'
+        },
+        menuIcon: {
+            marginRight: 8
         }
     };
 };
@@ -104,8 +123,10 @@ var EnhancedToolbar = function (_Component) {
                 classes = _props.classes,
                 createdByValue = _props.createdByValue,
                 searchValue = _props.searchValue,
+                visTypeValue = _props.visTypeValue,
                 searchData = _props.searchData,
-                filterData = _props.filterData;
+                filterData = _props.filterData,
+                showTypeFilter = _props.showTypeFilter;
 
 
             return _react2.default.createElement(
@@ -127,31 +148,78 @@ var EnhancedToolbar = function (_Component) {
                         open: this.state.filterTooltipOpen
                     },
                     _react2.default.createElement(
-                        _Select2.default,
-                        {
-                            disableUnderline: true,
-                            value: createdByValue,
-                            onChange: filterData,
-                            onMouseEnter: this.showFilterTooltip,
-                            onMouseLeave: this.hideFilterTooltip,
-                            MenuProps: {
-                                onEnter: this.hideFilterTooltip
-                            }
-                        },
+                        _react.Fragment,
+                        null,
+                        showTypeFilter ? _react2.default.createElement(
+                            _Select2.default,
+                            {
+                                disableUnderline: true,
+                                value: visTypeValue,
+                                onChange: function onChange(event) {
+                                    return filterData('visType', event.target.value);
+                                },
+                                onMouseEnter: this.showFilterTooltip,
+                                onMouseLeave: this.hideFilterTooltip,
+                                MenuProps: {
+                                    onEnter: this.hideFilterTooltip
+                                }
+                            },
+                            _react2.default.createElement(
+                                _MenuItem2.default,
+                                { value: "all" },
+                                _d2I18n2.default.t('All types')
+                            ),
+                            (0, _entries2.default)(_visTypes2.default).map(function (_ref2) {
+                                var _ref3 = (0, _slicedToArray3.default)(_ref2, 2),
+                                    key = _ref3[0],
+                                    value = _ref3[1];
+
+                                return _react2.default.createElement(
+                                    _MenuItem2.default,
+                                    { key: key, value: key },
+                                    _react2.default.createElement(
+                                        "span",
+                                        { className: classes.menuItem },
+                                        _react2.default.createElement(
+                                            "span",
+                                            { className: classes.menuIcon },
+                                            value.icon
+                                        ),
+                                        " ",
+                                        value.label
+                                    )
+                                );
+                            })
+                        ) : null,
                         _react2.default.createElement(
-                            _MenuItem2.default,
-                            { value: "all" },
-                            _d2I18n2.default.t('Show all')
-                        ),
-                        _react2.default.createElement(
-                            _MenuItem2.default,
-                            { value: "byme" },
-                            _d2I18n2.default.t('Created by me')
-                        ),
-                        _react2.default.createElement(
-                            _MenuItem2.default,
-                            { value: "byothers" },
-                            _d2I18n2.default.t('Created by others')
+                            _Select2.default,
+                            {
+                                disableUnderline: true,
+                                value: createdByValue,
+                                onChange: function onChange(event) {
+                                    return filterData('owner', event.target.value);
+                                },
+                                onMouseEnter: this.showFilterTooltip,
+                                onMouseLeave: this.hideFilterTooltip,
+                                MenuProps: {
+                                    onEnter: this.hideFilterTooltip
+                                }
+                            },
+                            _react2.default.createElement(
+                                _MenuItem2.default,
+                                { value: "all" },
+                                _d2I18n2.default.t('All owners')
+                            ),
+                            _react2.default.createElement(
+                                _MenuItem2.default,
+                                { value: "byme" },
+                                _d2I18n2.default.t('Created by me')
+                            ),
+                            _react2.default.createElement(
+                                _MenuItem2.default,
+                                { value: "byothers" },
+                                _d2I18n2.default.t('Created by others')
+                            )
                         )
                     )
                 )
@@ -164,7 +232,8 @@ var EnhancedToolbar = function (_Component) {
 var mapStateToProps = function mapStateToProps(state) {
     return {
         createdByValue: state.filtering.createdByValue,
-        searchValue: state.filtering.searchValue
+        searchValue: state.filtering.searchValue,
+        visTypeValue: state.filtering.visTypeValue
     };
 };
 
