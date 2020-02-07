@@ -16,7 +16,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 exports.default = _react2.default.createElement(
     _SvgIcon2.default,
-    { viewBox: '0 0 16 16' },
+    { viewBox: '0 0 16 16', style: { fontSize: 16 } },
     _react2.default.createElement(
         'g',
         { stroke: 'none', strokeWidth: '1', fill: 'none', fillRule: 'evenodd' },
