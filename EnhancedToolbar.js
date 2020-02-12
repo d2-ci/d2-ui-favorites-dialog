@@ -213,7 +213,7 @@ var EnhancedToolbar = function (_Component) {
                             _react2.default.createElement(
                                 _MenuItem2.default,
                                 { value: "byme" },
-                                _d2I18n2.default.t('Created by me')
+                                _d2I18n2.default.t('Created by you')
                             ),
                             _react2.default.createElement(
                                 _MenuItem2.default,
