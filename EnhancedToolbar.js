@@ -4,13 +4,9 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _slicedToArray2 = require("babel-runtime/helpers/slicedToArray");
+var _keys = require("babel-runtime/core-js/object/keys");
 
-var _slicedToArray3 = _interopRequireDefault(_slicedToArray2);
-
-var _entries = require("babel-runtime/core-js/object/entries");
-
-var _entries2 = _interopRequireDefault(_entries);
+var _keys2 = _interopRequireDefault(_keys);
 
 var _react = require("react");
 
@@ -35,6 +31,10 @@ var _TextField2 = _interopRequireDefault(_TextField);
 var _Toolbar = require("@material-ui/core/Toolbar");
 
 var _Toolbar2 = _interopRequireDefault(_Toolbar);
+
+var _Divider = require("@material-ui/core/Divider");
+
+var _Divider2 = _interopRequireDefault(_Divider);
 
 var _d2I18n = require("@dhis2/d2-i18n");
 
@@ -69,6 +69,25 @@ var toolbarStyles = function toolbarStyles() {
         }
     };
 };
+
+var VisTypeFilterMenuItem = (0, _styles.withStyles)(toolbarStyles)(function (_ref) {
+    var classes = _ref.classes,
+        type = _ref.type,
+        _ref$icon = _ref.icon,
+        icon = _ref$icon === undefined ? undefined : _ref$icon,
+        _ref$label = _ref.label,
+        label = _ref$label === undefined ? undefined : _ref$label;
+    return _react2.default.createElement(
+        "span",
+        { className: classes.menuItem },
+        _react2.default.createElement(
+            "span",
+            { className: classes.menuIcon },
+            icon || _visTypes2.default[type].icon
+        ),
+        label || _visTypes2.default[type].label
+    );
+});
 
 var EnhancedToolbar = function EnhancedToolbar(props) {
     var classes = props.classes,
@@ -109,25 +128,25 @@ var EnhancedToolbar = function EnhancedToolbar(props) {
                     { value: "all" },
                     _d2I18n2.default.t('All types')
                 ),
-                (0, _entries2.default)(_visTypes2.default).map(function (_ref) {
-                    var _ref2 = (0, _slicedToArray3.default)(_ref, 2),
-                        key = _ref2[0],
-                        value = _ref2[1];
-
+                _react2.default.createElement(_Divider2.default, null),
+                _react2.default.createElement(
+                    _MenuItem2.default,
+                    { value: _visTypes.CHART },
+                    _react2.default.createElement(VisTypeFilterMenuItem, { type: _visTypes.CHART, icon: _visTypes2.default['COLUMN'].icon, label: _d2I18n2.default.t('All chart types') })
+                ),
+                _react2.default.createElement(
+                    _MenuItem2.default,
+                    { value: _visTypes.PIVOT_TABLE },
+                    _react2.default.createElement(VisTypeFilterMenuItem, { type: _visTypes.PIVOT_TABLE })
+                ),
+                _react2.default.createElement(_Divider2.default, null),
+                (0, _keys2.default)(_visTypes2.default).filter(function (type) {
+                    return type !== _visTypes.PIVOT_TABLE;
+                }).map(function (type) {
                     return _react2.default.createElement(
                         _MenuItem2.default,
-                        { key: key, value: key },
-                        _react2.default.createElement(
-                            "span",
-                            { className: classes.menuItem },
-                            _react2.default.createElement(
-                                "span",
-                                { className: classes.menuIcon },
-                                value.icon
-                            ),
-                            " ",
-                            value.label
-                        )
+                        { key: type, value: type },
+                        _react2.default.createElement(VisTypeFilterMenuItem, { type: type })
                     );
                 })
             ) : null,

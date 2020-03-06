@@ -3,6 +3,11 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+exports.PIVOT_TABLE = exports.CHART = undefined;
+
+var _defineProperty2 = require('babel-runtime/helpers/defineProperty');
+
+var _defineProperty3 = _interopRequireDefault(_defineProperty2);
 
 var _d2I18n = require('@dhis2/d2-i18n');
 
@@ -62,11 +67,14 @@ var _PivotTableIcon2 = _interopRequireDefault(_PivotTableIcon);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var visTypeMap = {
-    BAR: { label: _d2I18n2.default.t('Bar'), icon: _BarIcon2.default },
-    STACKED_BAR: { label: _d2I18n2.default.t('Stacked bar'), icon: _StackedBarIcon2.default },
+var CHART = exports.CHART = 'CHART';
+var PIVOT_TABLE = exports.PIVOT_TABLE = 'PIVOT_TABLE';
+
+var visTypeMap = (0, _defineProperty3.default)({
     COLUMN: { label: _d2I18n2.default.t('Column'), icon: _ColumnIcon2.default },
     STACKED_COLUMN: { label: _d2I18n2.default.t('Stacked column'), icon: _StackedColumnIcon2.default },
+    BAR: { label: _d2I18n2.default.t('Bar'), icon: _BarIcon2.default },
+    STACKED_BAR: { label: _d2I18n2.default.t('Stacked bar'), icon: _StackedBarIcon2.default },
     LINE: { label: _d2I18n2.default.t('Line'), icon: _LineIcon2.default },
     AREA: { label: _d2I18n2.default.t('Area'), icon: _AreaIcon2.default },
     PIE: { label: _d2I18n2.default.t('Pie'), icon: _PieIcon2.default },
@@ -74,8 +82,7 @@ var visTypeMap = {
     GAUGE: { label: _d2I18n2.default.t('Gauge'), icon: _GaugeIcon2.default },
     YEAR_OVER_YEAR_LINE: { label: _d2I18n2.default.t('Year over year (line)'), icon: _YearOverYearLineIcon2.default },
     YEAR_OVER_YEAR_COLUMN: { label: _d2I18n2.default.t('Year over year (column)'), icon: _YearOverYearColumnIcon2.default },
-    SINGLE_VALUE: { label: _d2I18n2.default.t('Single value'), icon: _SingleValueIcon2.default },
-    PIVOT_TABLE: { label: _d2I18n2.default.t('Pivot table'), icon: _PivotTableIcon2.default }
-};
+    SINGLE_VALUE: { label: _d2I18n2.default.t('Single value'), icon: _SingleValueIcon2.default }
+}, PIVOT_TABLE, { label: _d2I18n2.default.t('Pivot table'), icon: _PivotTableIcon2.default });
 
 exports.default = visTypeMap;

@@ -5,11 +5,13 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.changePage = exports.setRowsPerPage = exports.setPage = exports.fetchData = exports.sortData = exports.filterData = exports.searchData = exports.setVisTypeValue = exports.setCreatedByValue = exports.setTotalRecords = exports.setSearchValue = exports.setSortColumn = exports.setSortOrder = exports.setData = exports.setFavoriteType = exports.setD2 = exports.selectFavorite = exports.toggleLoading = undefined;
 
-var _reducers = require('../reducers');
-
 var _loglevel = require('loglevel');
 
 var _loglevel2 = _interopRequireDefault(_loglevel);
+
+var _reducers = require('../reducers');
+
+var _visTypes = require('../visTypes');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -155,8 +157,14 @@ var fetchData = exports.fetchData = function fetchData() {
         }
 
         if (state.filtering.visTypeValue) {
-            if (state.filtering.visTypeValue !== 'all') {
-                favoriteModel = favoriteModel.filter().on('type').equals(state.filtering.visTypeValue);
+            switch (state.filtering.visTypeValue) {
+                case 'all':
+                    break;
+                case _visTypes.CHART:
+                    favoriteModel = favoriteModel.filter().on('type').notEqual(_visTypes.PIVOT_TABLE);
+                    break;
+                default:
+                    favoriteModel = favoriteModel.filter().on('type').equals(state.filtering.visTypeValue);
             }
         }
 
