@@ -132,7 +132,7 @@ var EnhancedToolbar = function EnhancedToolbar(props) {
                 _react2.default.createElement(
                     _MenuItem2.default,
                     { value: _visTypes.CHART },
-                    _react2.default.createElement(VisTypeFilterMenuItem, { type: _visTypes.CHART, icon: _visTypes2.default['COLUMN'].icon, label: _d2I18n2.default.t('Chart') })
+                    _react2.default.createElement(VisTypeFilterMenuItem, { type: _visTypes.CHART, icon: _visTypes2.default['COLUMN'].icon, label: _d2I18n2.default.t('All chart types') })
                 ),
                 _react2.default.createElement(
                     _MenuItem2.default,
