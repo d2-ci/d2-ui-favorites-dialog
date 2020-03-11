@@ -107,6 +107,7 @@ var filterData = exports.filterData = function filterData(filter, value) {
         }
 
         dispatch(fetchData());
+        dispatch(setPage(0));
     };
 };
 var sortData = exports.sortData = function sortData(event, column) {
