@@ -84,7 +84,8 @@ var Favorites = function (_Component) {
             var _props = this.props,
                 open = _props.open,
                 onRequestClose = _props.onRequestClose,
-                onFavoriteSelect = _props.onFavoriteSelect;
+                onFavoriteSelect = _props.onFavoriteSelect,
+                type = _props.type;
 
 
             var handleOnFavoriteSelect = function handleOnFavoriteSelect(id) {
@@ -93,14 +94,16 @@ var Favorites = function (_Component) {
                 onRequestClose();
             };
 
+            var showTypeColumn = /visualization|chart/.test(type);
+
             return _react2.default.createElement(
                 _Dialog2.default,
                 { open: open, onClose: onRequestClose, disableEnforceFocus: true, maxWidth: 'lg' },
                 _react2.default.createElement(
                     _DialogContent2.default,
                     null,
-                    _react2.default.createElement(_EnhancedToolbar2.default, null),
-                    _react2.default.createElement(_EnhancedTable2.default, { onFavoriteSelect: handleOnFavoriteSelect })
+                    _react2.default.createElement(_EnhancedToolbar2.default, { showTypeFilter: showTypeColumn }),
+                    _react2.default.createElement(_EnhancedTable2.default, { showTypeColumn: showTypeColumn, onFavoriteSelect: handleOnFavoriteSelect })
                 ),
                 _react2.default.createElement(
                     _DialogActions2.default,
@@ -119,6 +122,7 @@ var Favorites = function (_Component) {
 
 Favorites.propTypes = {
     open: _propTypes2.default.bool.isRequired,
+    type: _propTypes2.default.string.isRequired,
     onRequestClose: _propTypes2.default.func.isRequired,
     onFavoriteSelect: _propTypes2.default.func.isRequired,
     dataIsLoaded: _propTypes2.default.bool.isRequired,

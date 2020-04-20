@@ -42,6 +42,18 @@ var _TableSortLabel = require('@material-ui/core/TableSortLabel');
 
 var _TableSortLabel2 = _interopRequireDefault(_TableSortLabel);
 
+var _Tooltip = require('@material-ui/core/Tooltip');
+
+var _Tooltip2 = _interopRequireDefault(_Tooltip);
+
+var _d2I18n = require('@dhis2/d2-i18n');
+
+var _d2I18n2 = _interopRequireDefault(_d2I18n);
+
+var _visTypes = require('./visTypes');
+
+var _visTypes2 = _interopRequireDefault(_visTypes);
+
 var _actions = require('./actions');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -62,10 +74,14 @@ var Time = function Time(_ref) {
 var EnhancedTableHead = function EnhancedTableHead(props) {
     var order = props.order,
         column = props.column,
-        sortData = props.sortData;
-    // TODO i18n on labels
+        sortData = props.sortData,
+        showTypeColumn = props.showTypeColumn;
 
-    var columns = [{ id: 'displayName', label: 'Name' }, { id: 'created', label: 'Created' }, { id: 'lastUpdated', label: 'Last updated' }];
+    var columns = [{ id: 'displayName', label: _d2I18n2.default.t('Name') }, { id: 'created', label: _d2I18n2.default.t('Created') }, { id: 'lastUpdated', label: _d2I18n2.default.t('Last updated') }];
+
+    if (showTypeColumn) {
+        columns.splice(1, 0, { id: 'type', label: _d2I18n2.default.t('Type') });
+    }
 
     var createSortHandler = function createSortHandler(column) {
         return function (event) {
@@ -107,7 +123,8 @@ var EnhancedTable = function EnhancedTable(props) {
         order = props.order,
         column = props.column,
         sortData = props.sortData,
-        onFavoriteSelect = props.onFavoriteSelect;
+        onFavoriteSelect = props.onFavoriteSelect,
+        showTypeColumn = props.showTypeColumn;
 
 
     var clickHandler = function clickHandler(id) {
@@ -122,11 +139,13 @@ var EnhancedTable = function EnhancedTable(props) {
         _react2.default.createElement(
             _Table2.default,
             null,
-            _react2.default.createElement(EnhancedTableHead, { order: order, column: column, sortData: sortData }),
+            _react2.default.createElement(EnhancedTableHead, { order: order, column: column, sortData: sortData, showTypeColumn: showTypeColumn }),
             _react2.default.createElement(
                 _TableBody2.default,
                 null,
                 data.map(function (favorite) {
+                    var visType = _visTypes2.default[favorite.type];
+
                     return _react2.default.createElement(
                         _TableRow2.default,
                         { hover: true, key: favorite.id },
@@ -138,6 +157,16 @@ var EnhancedTable = function EnhancedTable(props) {
                                 style: { width: '60%', cursor: 'pointer' }
                             },
                             favorite.displayName
+                        ),
+                        showTypeColumn && _react2.default.createElement(
+                            _TableCell2.default,
+                            {
+                                padding: 'dense' },
+                            _react2.default.createElement(
+                                _Tooltip2.default,
+                                { title: visType.label },
+                                visType.icon
+                            )
                         ),
                         _react2.default.createElement(
                             _TableCell2.default,
