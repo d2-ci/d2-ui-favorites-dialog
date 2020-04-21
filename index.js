@@ -1,10 +1,12 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _FavoritesDialog = require('./FavoritesDialog');
+require("./locales/");
+
+var _FavoritesDialog = require("./FavoritesDialog");
 
 var _FavoritesDialog2 = _interopRequireDefault(_FavoritesDialog);
 
