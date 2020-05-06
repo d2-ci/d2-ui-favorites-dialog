@@ -52,29 +52,45 @@ var _translations21 = require('./pt/translations.json');
 
 var _translations22 = _interopRequireDefault(_translations21);
 
-var _translations23 = require('./ru/translations.json');
+var _translations23 = require('./pt_BR/translations.json');
 
 var _translations24 = _interopRequireDefault(_translations23);
 
-var _translations25 = require('./uk/translations.json');
+var _translations25 = require('./ru/translations.json');
 
 var _translations26 = _interopRequireDefault(_translations25);
 
-var _translations27 = require('./ur/translations.json');
+var _translations27 = require('./sv/translations.json');
 
 var _translations28 = _interopRequireDefault(_translations27);
 
-var _translations29 = require('./vi/translations.json');
+var _translations29 = require('./tet/translations.json');
 
 var _translations30 = _interopRequireDefault(_translations29);
 
-var _translations31 = require('./zh/translations.json');
+var _translations31 = require('./tg/translations.json');
 
 var _translations32 = _interopRequireDefault(_translations31);
 
-var _translations33 = require('./zh_CN/translations.json');
+var _translations33 = require('./uk/translations.json');
 
 var _translations34 = _interopRequireDefault(_translations33);
+
+var _translations35 = require('./ur/translations.json');
+
+var _translations36 = _interopRequireDefault(_translations35);
+
+var _translations37 = require('./vi/translations.json');
+
+var _translations38 = _interopRequireDefault(_translations37);
+
+var _translations39 = require('./zh/translations.json');
+
+var _translations40 = _interopRequireDefault(_translations39);
+
+var _translations41 = require('./zh_CN/translations.json');
+
+var _translations42 = _interopRequireDefault(_translations41);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -98,11 +114,15 @@ _d2I18n2.default.addResources('nb', namespace, _translations16.default);
 _d2I18n2.default.addResources('prs', namespace, _translations18.default);
 _d2I18n2.default.addResources('ps', namespace, _translations20.default);
 _d2I18n2.default.addResources('pt', namespace, _translations22.default);
-_d2I18n2.default.addResources('ru', namespace, _translations24.default);
-_d2I18n2.default.addResources('uk', namespace, _translations26.default);
-_d2I18n2.default.addResources('ur', namespace, _translations28.default);
-_d2I18n2.default.addResources('vi', namespace, _translations30.default);
-_d2I18n2.default.addResources('zh', namespace, _translations32.default);
-_d2I18n2.default.addResources('zh_CN', namespace, _translations34.default);
+_d2I18n2.default.addResources('pt_BR', namespace, _translations24.default);
+_d2I18n2.default.addResources('ru', namespace, _translations26.default);
+_d2I18n2.default.addResources('sv', namespace, _translations28.default);
+_d2I18n2.default.addResources('tet', namespace, _translations30.default);
+_d2I18n2.default.addResources('tg', namespace, _translations32.default);
+_d2I18n2.default.addResources('uk', namespace, _translations34.default);
+_d2I18n2.default.addResources('ur', namespace, _translations36.default);
+_d2I18n2.default.addResources('vi', namespace, _translations38.default);
+_d2I18n2.default.addResources('zh', namespace, _translations40.default);
+_d2I18n2.default.addResources('zh_CN', namespace, _translations42.default);
 
 exports.default = _d2I18n2.default;
