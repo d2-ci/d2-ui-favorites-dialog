@@ -137,7 +137,12 @@ var EnhancedTable = function EnhancedTable(props) {
         _react2.default.createElement(
             _Table2.default,
             null,
-            _react2.default.createElement(EnhancedTableHead, { order: order, column: column, sortData: sortData, showTypeColumn: showTypeColumn }),
+            _react2.default.createElement(EnhancedTableHead, {
+                order: order,
+                column: column,
+                sortData: sortData,
+                showTypeColumn: showTypeColumn
+            }),
             _react2.default.createElement(
                 _TableBody2.default,
                 null,
@@ -158,8 +163,7 @@ var EnhancedTable = function EnhancedTable(props) {
                         ),
                         showTypeColumn && _react2.default.createElement(
                             _TableCell2.default,
-                            {
-                                padding: 'dense' },
+                            { padding: 'dense' },
                             _react2.default.createElement(
                                 _Tooltip2.default,
                                 {
@@ -191,7 +195,14 @@ var EnhancedTable = function EnhancedTable(props) {
                         count: totalRecords,
                         rowsPerPage: rowsPerPage,
                         page: page,
-                        onChangePage: changePage
+                        onChangePage: changePage,
+                        labelDisplayedRows: function labelDisplayedRows(_ref2) {
+                            var from = _ref2.from,
+                                to = _ref2.to,
+                                count = _ref2.count;
+
+                            return count !== -1 ? from + '-' + to + ' / ' + count : from + '-' + to + ' / ' + to;
+                        }
                         //onChangeRowsPerPage={setRowsPerPage}
                         //rowsPerPageOptions={[5, 10, 15, 20]}
                         , rowsPerPageOptions: []
