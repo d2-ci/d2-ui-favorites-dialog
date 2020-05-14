@@ -44,8 +44,6 @@ var _actions = require("./actions");
 
 var _visTypes = require("./visTypes");
 
-var _visTypes2 = _interopRequireDefault(_visTypes);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var toolbarStyles = function toolbarStyles() {
@@ -83,9 +81,9 @@ var VisTypeFilterMenuItem = (0, _styles.withStyles)(toolbarStyles)(function (_re
         _react2.default.createElement(
             "span",
             { className: classes.menuIcon },
-            icon || _visTypes2.default[type].icon
+            icon || _visTypes.visTypeIcons[type]
         ),
-        label || _visTypes2.default[type].label
+        label || (0, _visTypes.getVisTypeLabel)(type)
     );
 });
 
@@ -132,7 +130,11 @@ var EnhancedToolbar = function EnhancedToolbar(props) {
                 _react2.default.createElement(
                     _MenuItem2.default,
                     { value: _visTypes.CHART },
-                    _react2.default.createElement(VisTypeFilterMenuItem, { type: _visTypes.CHART, icon: _visTypes2.default['COLUMN'].icon, label: _d2I18n2.default.t('All chart types') })
+                    _react2.default.createElement(VisTypeFilterMenuItem, {
+                        type: _visTypes.CHART,
+                        icon: _visTypes.visTypeIcons[_visTypes.COLUMN],
+                        label: _d2I18n2.default.t('All chart types')
+                    })
                 ),
                 _react2.default.createElement(
                     _MenuItem2.default,
@@ -140,7 +142,7 @@ var EnhancedToolbar = function EnhancedToolbar(props) {
                     _react2.default.createElement(VisTypeFilterMenuItem, { type: _visTypes.PIVOT_TABLE })
                 ),
                 _react2.default.createElement(_Divider2.default, null),
-                (0, _keys2.default)(_visTypes2.default).filter(function (type) {
+                (0, _keys2.default)(_visTypes.visTypeIcons).filter(function (type) {
                     return type !== _visTypes.PIVOT_TABLE;
                 }).map(function (type) {
                     return _react2.default.createElement(

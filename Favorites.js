@@ -34,6 +34,10 @@ var _propTypes = require('prop-types');
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
+var _d2I18n = require('@dhis2/d2-i18n');
+
+var _d2I18n2 = _interopRequireDefault(_d2I18n);
+
 var _Dialog = require('@material-ui/core/Dialog');
 
 var _Dialog2 = _interopRequireDefault(_Dialog);
@@ -111,7 +115,7 @@ var Favorites = function (_Component) {
                     _react2.default.createElement(
                         _Button2.default,
                         { color: 'primary', onClick: onRequestClose },
-                        'Close'
+                        _d2I18n2.default.t('Close')
                     )
                 )
             );

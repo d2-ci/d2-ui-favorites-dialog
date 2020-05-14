@@ -52,8 +52,6 @@ var _d2I18n2 = _interopRequireDefault(_d2I18n);
 
 var _visTypes = require('./visTypes');
 
-var _visTypes2 = _interopRequireDefault(_visTypes);
-
 var _actions = require('./actions');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -149,7 +147,7 @@ var EnhancedTable = function EnhancedTable(props) {
                 _TableBody2.default,
                 null,
                 data.map(function (favorite) {
-                    var visType = _visTypes2.default[favorite.type];
+                    var visTypeIcon = _visTypes.visTypeIcons[favorite.type];
 
                     return _react2.default.createElement(
                         _TableRow2.default,
@@ -168,8 +166,10 @@ var EnhancedTable = function EnhancedTable(props) {
                             { padding: 'dense' },
                             _react2.default.createElement(
                                 _Tooltip2.default,
-                                { title: visType.label },
-                                visType.icon
+                                {
+                                    title: (0, _visTypes.getVisTypeLabel)(favorite.type)
+                                },
+                                visTypeIcon
                             )
                         ),
                         _react2.default.createElement(
