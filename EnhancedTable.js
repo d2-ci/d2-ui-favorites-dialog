@@ -201,14 +201,7 @@ var EnhancedTable = function EnhancedTable(props) {
                                 to = _ref2.to,
                                 count = _ref2.count;
 
-                            return count !== -1 ? _d2I18n2.default.t('{{from}}-{{to}} of {{total}}', {
-                                from: from,
-                                to: to,
-                                total: count
-                            }) : _d2I18n2.default.t('{{from}}-{{to}} of more than {{to}}', {
-                                from: from,
-                                to: to
-                            });
+                            return count !== -1 ? from + '-' + to + ' / ' + count : from + '-' + to + ' / ' + to;
                         }
                         //onChangeRowsPerPage={setRowsPerPage}
                         //rowsPerPageOptions={[5, 10, 15, 20]}
