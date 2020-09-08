@@ -102,7 +102,7 @@ var Favorites = function (_Component) {
 
             return _react2.default.createElement(
                 _Dialog2.default,
-                { open: open, onClose: onRequestClose, disableEnforceFocus: true, maxWidth: 'lg' },
+                { open: open, onClose: onRequestClose, disableEnforceFocus: true, maxWidth: 'md', fullWidth: true },
                 _react2.default.createElement(
                     _DialogContent2.default,
                     null,
