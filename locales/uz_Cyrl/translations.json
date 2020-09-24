@@ -1,14 +1,14 @@
 {
     "Name": "Исми",
     "Created": "Яратилди",
-    "Last updated": "",
+    "Last updated": "Охирги янгиланган",
     "Type": "Тури",
     "Search by name": "",
     "All types": "",
     "All chart types": "",
     "All owners": "",
     "Created by you": "",
-    "Created by others": "",
+    "Created by others": "Бошқалар яратганлари",
     "Close": "Ёпиқ",
     "Column": "Устун",
     "Stacked column": "",
@@ -23,5 +23,5 @@
     "Year over year (line)": "",
     "Year over year (column)": "",
     "Single value": "",
-    "Pivot table": ""
+    "Pivot table": "Таянч жадвал"
 }
