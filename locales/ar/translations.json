@@ -11,17 +11,17 @@
     "Created by others": "تم الإنشاء بواسطة الآخرين",
     "Close": "إغلاق",
     "Column": "العمود",
-    "Stacked column": "عمود تراكمي",
+    "Stacked column": "عمود مكدس",
     "Bar": "مخطط شريطي",
-    "Stacked bar": "شريط تراكمي",
+    "Stacked bar": "شريط مكدس",
     "Line": "مخطط خطي",
     "Area": "مساحة",
-    "Stacked area": "",
+    "Stacked area": "منطقة مكدسة",
     "Pie": "مخطط دائري",
     "Radar": "مخطط رادار",
-    "Gauge": "مخطط قياس",
+    "Gauge": "مخطط مقياس",
     "Year over year (line)": "عام بعد عام (خط)",
     "Year over year (column)": "عام بعد عام (عمود)",
     "Single value": "قيمة مفردة",
-    "Pivot table": "الجدول المحوري"
+    "Pivot table": "جدول المحوري"
 }
